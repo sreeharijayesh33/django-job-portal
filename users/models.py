@@ -30,6 +30,8 @@ class CustomUserManager(BaseUserManager):
         user.set_password(password) #sets password securely and hashes it
         user.save(using=self._db) #for saving the user to DB
         return user
+    
+
 #for admin related access
     def create_superuser(self, email, full_name, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True) #Ensures that the superuser has admin access
@@ -59,3 +61,5 @@ class User(AbstractBaseUser, PermissionsMixin): #ABU-login and password fetaure,
 
     def __str__(self):
         return self.email
+    
+
